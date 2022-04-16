@@ -1,0 +1,63 @@
+
+<web-app
+        xmlns="http://java.sun.com/xml/ns/javaee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+        version="3.0">
+
+    <display-name>Cinema</display-name>
+
+    <context-param>
+        <param-name>rowNum</param-name>
+        <param-value>4</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>colNum</param-name>
+        <param-value>5</param-value>
+    </context-param>
+
+    <servlet>
+        <servlet-name>HallServlet</servlet-name>
+        <servlet-class>servlet.HallServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>HallServlet</servlet-name>
+        <url-pattern>/hall</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>PayServlet</servlet-name>
+        <servlet-class>servlet.PayServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PayServlet</servlet-name>
+        <url-pattern>/pay</url-pattern>
+    </servlet-mapping>
+
+</web-app>
+
+<!--
+Примечания
+Элемент <context-param> в файле web.xml задает параметр,
+которым инициализируются сервлеты. Внутри этого элемента
+с помощью элемента <param-name> задается имя параметра,
+а с помощью элемента <param-value> - значение параметра.
+
+  <context-param>
+    <param-name>message</param-name>
+    <param-value>Hello Servlets</param-value>
+  </context-param>
+
+Для получения параметра внутри сервлета необходимо
+обратиться к контексту сервлета. Для его получения внутри
+класса сервлета определен метод getServletContext(). Он возвращает
+объект ServletContext. Затем у этого объекта вызывается метод
+getInitParameter(), в который передается название параметра инициализации.
+String message = getServletContext().getInitParameter("message");
+
+Стоит отметить, что этот параметр будет доступен
+для всех сервлетов в приложении. Соответственно если мы
+изменим в web.xml значение параметра,
+то оно изменится для всех сервлетов.
+-->
