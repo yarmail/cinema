@@ -1,0 +1,124 @@
+2022-04-16 23:48:52 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "DATABASECHANGELOGLOCK" не найдена
+Table "DATABASECHANGELOGLOCK" not found; SQL statement:
+SELECT COUNT(*) FROM DATABASECHANGELOGLOCK [42102-200]
+2022-04-16 23:48:54 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "
+
+CREATE TABLE IF NOT EXISTS TICKET (
+ID SERIAL PRIMARY KEY,
+SESSION_ID INT NOT NULL,
+ROW[*] INT NOT NULL,
+COL INT NOT NULL,
+ACCOUNT_ID INT NOT NULL REFERENCES ACCOUNT(ID),
+UNIQUE (SESSION_ID, ROW, COL)
+);
+
+                                      
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                "; ожидалось "identifier"
+Syntax error in SQL statement "
+
+CREATE TABLE IF NOT EXISTS TICKET (
+ID SERIAL PRIMARY KEY,
+SESSION_ID INT NOT NULL,
+ROW[*] INT NOT NULL,
+COL INT NOT NULL,
+ACCOUNT_ID INT NOT NULL REFERENCES ACCOUNT(ID),
+UNIQUE (SESSION_ID, ROW, COL)
+);
+
+                                      
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                "; expected "identifier"; SQL statement:
+
+
+CREATE TABLE IF NOT EXISTS ticket (
+id SERIAL PRIMARY KEY,
+session_id INT NOT NULL,
+row INT NOT NULL,
+col INT NOT NULL,
+account_id INT NOT NULL REFERENCES account(id),
+UNIQUE (session_id, row, col)
+);
+
+--DROP TABLE IF EXISTS ticket CASCADE;
+
+/*
+Примечания по теме
+Пробуем добавить CONSTRAINT прямо в процессе создания таблицы
+Ограничения нужно добавить на три колонки
+session_id, row, cell (сеанс, ряд и место).
+В JDBC нужно добавить обработку ConstrainsViolationException.
+Возможные решения
+CONSTRAINT unique_ticket UNIQUE (session_id, row, cell)
+UNIQUE(session_id, row, col), но мне кажется оно неправильное
+
+Общие пояснения
+Оператор CONSTRAINT. Установка имени ограничений.
+CREATE TABLE Customers (
+...
+Email CHARACTER VARYING(30),
+CONSTRAINT customers_email_key UNIQUE(Email),
+)
+ */ [42001-200]
+2022-04-16 23:52:54 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "
+
+CREATE TABLE IF NOT EXISTS TICKET (
+ID SERIAL PRIMARY KEY,
+SESSION_ID INT NOT NULL,
+ROW[*] INT NOT NULL,
+COL INT NOT NULL,
+ACCOUNT_ID INT NOT NULL REFERENCES ACCOUNT(ID),
+UNIQUE (SESSION_ID, ROW, COL)
+);
+
+                                      
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                "; ожидалось "identifier"
+Syntax error in SQL statement "
+
+CREATE TABLE IF NOT EXISTS TICKET (
+ID SERIAL PRIMARY KEY,
+SESSION_ID INT NOT NULL,
+ROW[*] INT NOT NULL,
+COL INT NOT NULL,
+ACCOUNT_ID INT NOT NULL REFERENCES ACCOUNT(ID),
+UNIQUE (SESSION_ID, ROW, COL)
+);
+
+                                      
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                "; expected "identifier"; SQL statement:
+
+
+CREATE TABLE IF NOT EXISTS ticket (
+id SERIAL PRIMARY KEY,
+session_id INT NOT NULL,
+row INT NOT NULL,
+col INT NOT NULL,
+account_id INT NOT NULL REFERENCES account(id),
+UNIQUE (session_id, row, col)
+);
+
+--DROP TABLE IF EXISTS ticket CASCADE;
+
+/*
+Примечания по теме
+Пробуем добавить CONSTRAINT прямо в процессе создания таблицы
+Ограничения нужно добавить на три колонки
+session_id, row, cell (сеанс, ряд и место).
+В JDBC нужно добавить обработку ConstrainsViolationException.
+Возможные решения
+CONSTRAINT unique_ticket UNIQUE (session_id, row, cell)
+UNIQUE(session_id, row, col), но мне кажется оно неправильное
+
+Общие пояснения
+Оператор CONSTRAINT. Установка имени ограничений.
+CREATE TABLE Customers (
+...
+Email CHARACTER VARYING(30),
+CONSTRAINT customers_email_key UNIQUE(Email),
+)
+ */ [42001-200]

@@ -68,7 +68,7 @@ public class DbStore {
     public void createTicket(Ticket ticket) throws SQLException {
         try (Connection cn = pool.getConnection();
              PreparedStatement ps = cn.prepareStatement(
-                     "insert into ticket (session_id, row, col, account_id) values ((?), (?), (?), (?))")) {
+                     "insert into ticket (session_id, line, col, account_id) values ((?), (?), (?), (?))")) {
             ps.setInt(1, 1);
             ps.setInt(2, ticket.getRow());
             ps.setInt(3, ticket.getCol());
@@ -114,3 +114,8 @@ public class DbStore {
         return result;
     }
 }
+/*
+Примечания
+Поменял в таблице ROW на LINE - row - зарезервированное слово для H2
+В билете будет row - в таблице line
+ */

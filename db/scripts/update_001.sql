@@ -8,10 +8,10 @@ phone VARCHAR NOT NULL UNIQUE
 CREATE TABLE IF NOT EXISTS ticket (
 id SERIAL PRIMARY KEY,
 session_id INT NOT NULL,
-row INT NOT NULL,
+line INT NOT NULL,
 col INT NOT NULL,
 account_id INT NOT NULL REFERENCES account(id),
-UNIQUE (session_id, row, col)
+UNIQUE (session_id, line, col)
 );
 
 --DROP TABLE IF EXISTS ticket CASCADE;
@@ -25,6 +25,12 @@ session_id, row, cell (сеанс, ряд и место).
 Возможные решения
 CONSTRAINT unique_ticket UNIQUE (session_id, row, cell)
 UNIQUE(session_id, row, col), но мне кажется оно неправильное
+
+----
+Вроде как получается, что ROW - это зарезервированное имя для H2
+Поменял ROW на LINE
+
+----
 
 Общие пояснения
 Оператор CONSTRAINT. Установка имени ограничений.
